@@ -1,2 +1,10 @@
 class HotelsController < ApplicationController
-end
+
+  def index #view all hotels
+  end 
+
+  def show #view a single hotel 
+  end 
+
+
+end #ends class 
