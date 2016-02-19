@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cost: 1
+  min_age: 1
+  min_nights: 1
+  max_guests: 1
+
+two:
+  name: MyString
+  cost: 1
+  min_age: 1
+  min_nights: 1
+  max_guests: 1
