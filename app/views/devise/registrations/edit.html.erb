@@ -4,6 +4,11 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -27,9 +32,25 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Amount of Money you have" %><br />
+    <%= f.number_field :money, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin, autofocus: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+
 <% end %>
 
 <h3>Cancel my account</h3>

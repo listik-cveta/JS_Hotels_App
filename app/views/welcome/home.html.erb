@@ -1,2 +1,13 @@
 <h1>Welcome to the Hotels App!</h1>
-<h2>This is the home page</h2> 
+<h2>****This is the home page***** </h2> 
+
+
+<% if user_signed_in? %>
+  <h2>What would you like to do?</h2>
+  <ul>
+    <li>View Reservations -- Create link</li>
+    <li>Make a new reservation -- Create link</li>
+  </ul>
+<% else %>
+  <h2>Please login to gain access to all of our amazing hotel deals!</h2>
+<% end %>
