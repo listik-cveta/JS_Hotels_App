@@ -1,0 +1,9 @@
+<h3><%= link_to "Create a new Hotel", new_hotel_path %></h3>
+
+<h1>All Hotels:</h1>
+
+<% @hotels.each do |hotel| %>
+  <h3>-- <%= link_to hotel.name, hotel_path(hotel) %> | $<%= hotel.cost %> per night </h3>
+<% end %>
+
+

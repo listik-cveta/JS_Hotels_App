@@ -1,0 +1,15 @@
+<h3><%= link_to "View all hotels", hotels_path %></h3>
+
+<h1><%= @hotel.name %></h1>
+
+<h2>Contact Information:</h2>
+<h3>Phone Number: <%= @hotel.phone_number %></h3>
+<h3>Address: <%= @hotel.address %></h3>
+
+<h2>Hotel Details:</h2>
+<h3>Price per night: $<%= @hotel.cost %> </h3>
+<h3>Minimum Night Stay: <%= @hotel.min_nights %></h3>
+<h3>Maximum people per room: <%= @hotel.max_guests %></h3>
+<h3>Minimum age to book a reservation: <%= @hotel.min_age %> years old</h3>
+
+<h3><%= link_to "Edit Hotel", edit_hotel_path(@hotel) %></h3>

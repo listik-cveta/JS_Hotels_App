@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  enum role: [:normal, :admin]
+  # enum role: [:normal, :admin]
 
   has_many :reservations 
   has_many :hotels, through: :reservations 

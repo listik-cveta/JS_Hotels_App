@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
  
-  resources :reservations
+  resources :reservations, only: [:create, :new, :edit, :update, :destroy]
   resources :hotels
   devise_for :users
+  resources :users, only: [:show] do 
+    resources :reservations, only: [:index, :show]
+  end
+
+  resources :users, only: [:index]
+
+  # get '/users/reservations', to: 'users#reservations'
  
   root 'welcome#home'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220131326) do
+ActiveRecord::Schema.define(version: 20160220152406) do
 
   create_table "hotels", force: :cascade do |t|
     t.string   "name"
-    t.integer  "cost",       default: 1
-    t.integer  "min_age",    default: 1
-    t.integer  "min_nights", default: 1
-    t.integer  "max_guests", default: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "cost",         default: 1
+    t.integer  "min_age",      default: 1
+    t.integer  "min_nights",   default: 1
+    t.integer  "max_guests",   default: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "address"
+    t.string   "phone_number"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160220131326) do
     t.datetime "updated_at",             null: false
     t.integer  "num_nights", default: 0
     t.integer  "num_guests", default: 0
+    t.date     "check_in"
   end
 
   add_index "reservations", ["hotel_id"], name: "index_reservations_on_hotel_id"

@@ -1,0 +1,6 @@
+<h1>Reservations</h1>
+
+<% @reservations.each do |reservation| %>
+  <h2> <%= reservation.check_in %> -- <%= reservation.num_nights %>  </h2>
+  
+<% end %>
