@@ -7,5 +7,5 @@
 <h1>Existing Reservations:</h1>
 
 <% @user.reservations.each do |reservation| %>
- <h3> <%= reservation.check_in %> -- <%= reservation.hotel_id %> </h3>
+ <h3> <%= reservation.check_in %> -- <%= Hotel.find_by_id(reservation.hotel_id).name %> </h3>
 <% end %>
