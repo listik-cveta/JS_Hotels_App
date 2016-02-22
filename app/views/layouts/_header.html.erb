@@ -1,6 +1,6 @@
 
   <% if user_signed_in? %>
-     Welcome, <strong><%= current_user.username %></strong>! <br>
+     Welcome, <strong><%= current_user.name %></strong>! <br>
     <%= link_to "Home", root_path %> |
     <%= link_to 'View Profile',user_path(current_user) %> |
     <%= link_to("Sign out", destroy_user_session_path, :method => :delete) %> 

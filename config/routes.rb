@@ -2,18 +2,15 @@ Rails.application.routes.draw do
  
   resources :reservations, only: [:create, :new, :edit, :update, :destroy, :show, :index]
   resources :hotels
-  devise_for :users
-  # resources :users, only: [:show] do 
-  #   resources :reservations, only: [:index, :show]
-  # end
+  #devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
   resources :users, only: [:index, :show]
-
-  get '/auth/facebook/callback' => 'sessions#create'
-
-  # get '/users/reservations', to: 'users#reservations'
  
   root 'welcome#home'
+
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

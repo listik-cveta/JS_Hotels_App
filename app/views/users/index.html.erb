@@ -2,7 +2,7 @@
 <h2>Maybe link to their reservations?????????? </h2>
 ---------------------------------------------------------------
 <% @users.each do |user| %>
- <h3> Username: <%= user.username %></h3> 
+ <h3> Username: <%= user.name %></h3> 
  <h3>Email: <%= user.email %></h3>
  <h3><%= link_to "Profile", user_path(user) %></h3>
  ---------------------------------------------------------------

@@ -2,8 +2,11 @@
 
 <h1>All Hotels:</h1>
 
+<% counter = 1 %>
 <% @hotels.each do |hotel| %>
-  <h3>-- <%= link_to hotel.name, hotel_path(hotel) %> | $<%= hotel.cost %> per night </h3>
+  <h3><%= counter %>. <%= hotel.name %> | $<%= hotel.cost %> per night | <%= link_to "Details", hotel_path(hotel) %> </h3>
+  <% counter += 1 %>
+  
 <% end %>
 
 
