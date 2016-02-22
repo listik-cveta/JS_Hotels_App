@@ -25,22 +25,22 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @hotel = Hotel.find(params[:hotel_id])
 
-    if @hotel.cost > current_user.money 
-      "Sorry, you don't have enough money to stay here"
-      redirect_to user_path(current_user)
+    if (@hotel.cost * @reservation.num_nights) > current_user.money 
+      flash.now[:notice] = "Sorry, you don't have enough money to stay here"
+      render :new  
     elsif @hotel.min_age > current_user.age 
-      "Sorry, you are not old enough to stay here"
-      redirect_to user_path(current_user)
+      flash.now[:notice] = "Sorry, you are not old enough to stay here"
+      render :new
     elsif @hotel.min_nights > @reservation.num_nights # Do I need to have a has_many reservations through user?
-      "Sorry, you need to stay here at least #{@hotel.min_nights} night(s)" # Can I use pluralize helper?
-      redirect_to user_path(current_user)
+      flash.now[:notice] = "Sorry, you need to stay here at least #{@hotel.min_nights} night(s)" # Can I use pluralize helper?
+      render :new
     elsif @hotel.max_guests < @reservation.num_guests
-      "Sorry, only a maximum of #{@hotel.max_guests} guests are allowed to stay here"
-      redirect_to user_path(current_user)
+      flash.now[:notice] = "Sorry, only a maximum of #{@hotel.max_guests} guests are allowed to stay here"
+      render :new
     else 
       current_user.money -= (@reservation.num_nights * @hotel.cost) 
       current_user.save 
-      "Thanks for booking a room at #{@hotel.name}!"
+      flash[:alert] = "Thanks for booking a room at #{@hotel.name}!"
       @reservation.save!
       redirect_to user_path(current_user)
     end 
