@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
   # allows edit form to remember the users params
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :current_password, :age, :money) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :age, :money, :admin) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :current_password, :age, :money, :admin) }
   end
 
 end #ends class

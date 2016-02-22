@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
  
-  resources :reservations, only: [:create, :new, :edit, :update, :destroy]
+  resources :reservations, only: [:create, :new, :edit, :update, :destroy, :show, :index]
   resources :hotels
   devise_for :users
-  resources :users, only: [:show] do 
-    resources :reservations, only: [:index, :show]
-  end
+  # resources :users, only: [:show] do 
+  #   resources :reservations, only: [:index, :show]
+  # end
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
 
   # get '/users/reservations', to: 'users#reservations'
  

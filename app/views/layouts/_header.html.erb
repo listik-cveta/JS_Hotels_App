@@ -1,12 +1,12 @@
-<ul>
-  <li><%= link_to "Home", root_path %></li>
 
   <% if user_signed_in? %>
-    <li> Welcome, <%= current_user.username %> </li>
-    <li> <%= link_to("Sign out", destroy_user_session_path, :method => :delete) %> </li>
-    <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+     Welcome, <strong><%= current_user.username %></strong>! <br>
+    <%= link_to "Home", root_path %> |
+    <%= link_to 'View Profile',user_path(current_user) %> |
+    <%= link_to("Sign out", destroy_user_session_path, :method => :delete) %> 
   <% else %>
-    <li> <%= link_to "Log in", new_user_session_path %> </li>
-    <li> <%= link_to "Sign up", new_user_registration_path %> </li>
+    <%= link_to "Home", root_path %> |
+     <%= link_to "Log in", new_user_session_path %> |
+     <%= link_to "Sign up", new_user_registration_path %> 
   <% end %>
-</ul>
+

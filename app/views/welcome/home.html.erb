@@ -6,7 +6,7 @@
   <h2>What would you like to do?</h2>
   <ul>
     <li><%= link_to "View Profile", user_path(current_user) %> </li>
-    <li><%= link_to "View Reservations", user_reservations_path(current_user) %></li>
+    <li><%= link_to "View All Reservations (admin)", reservations_path %></li>
     <li><%= link_to "Make a new reservation", new_reservation_path %></li>
     <h2>Need to make this next part for admin only</h2>
     <li><%= link_to "Create a hotel", new_hotel_path %></li>
