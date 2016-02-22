@@ -1,16 +1,16 @@
 <%= form_for @reservation do |f| %>
 
   <%= f.label "Select Hotel" %>
-  <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name) %>
+  <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name) %><br><br>
 
   <%= f.label "Check in date" %>
-  <%= f.date_field :check_in %>
+  <%= f.date_field :check_in %><br><br>
 
   <%= f.label "Number of nights" %>
-  <%= f.number_field :num_nights %>
+  <%= f.number_field :num_nights %><br><br>
 
   <%= f.label "Number of guests" %>
-  <%= f.number_field :num_guests %>
+  <%= f.number_field :num_guests %><br><br>
 
   <%= f.submit "Create Reservation" %> 
 

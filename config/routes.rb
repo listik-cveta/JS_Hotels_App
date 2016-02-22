@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  get '/auth/facebook/callback' => 'sessions#create'
+
   # get '/users/reservations', to: 'users#reservations'
  
   root 'welcome#home'

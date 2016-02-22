@@ -8,5 +8,5 @@
 <h3><%= link_to "Create new reservation", new_reservation_path %></h3>
 
 <% @user.reservations.each do |reservation| %>
- <h3> <%= reservation.check_in.strftime("%A, %b %d, %Y") %> -- <%= Hotel.find_by_id(reservation.hotel_id).name %>  <%= link_to "View Reservation", reservation_path(reservation)%> </h3>
+ <h3> <%= reservation.check_in.strftime("%A, %B %d, %Y") %> -- <%= Hotel.find_by_id(reservation.hotel_id).name %>  <%= link_to "View Reservation", reservation_path(reservation)%> </h3>
 <% end %>

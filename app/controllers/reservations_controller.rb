@@ -2,9 +2,10 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = Reservation.all
-    unless current_user.admin? 
-      redirect_to new_user_session_path, alert: "Access denied"
-    end  
+    
+    unless current_user.admin?
+      redirect_to root_path, alert: "Access denied."
+    end
   end 
 
   def show
