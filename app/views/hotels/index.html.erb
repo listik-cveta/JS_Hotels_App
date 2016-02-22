@@ -5,6 +5,7 @@
 <% counter = 1 %>
 <% @hotels.each do |hotel| %>
   <h3><%= counter %>. <%= hotel.name %> | $<%= hotel.cost %> per night | <%= link_to "Details", hotel_path(hotel) %> </h3>
+  <h2> <%= link_to "Book this hotel", new_reservation_path %></h2>
   <% counter += 1 %>
   
 <% end %>

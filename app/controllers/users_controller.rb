@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end 
 
   private
-
+####### CAN I DELETE THIS?????
   def user_params
     params.require(:user).permit(:name, :admin, :age, :money)
   end
