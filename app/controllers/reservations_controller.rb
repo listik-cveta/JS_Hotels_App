@@ -62,6 +62,9 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
+    @hotel = Hotel.find_by_id(@reservation.hotel_id)
+    current_user.money += (@reservation.num_nights * @hotel.cost)
+    current_user.save
     @reservation.destroy
     redirect_to user_path(current_user), notice: "Your reservation has been deleted"
   end 
