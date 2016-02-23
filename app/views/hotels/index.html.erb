@@ -1,5 +1,7 @@
 <h3><%= link_to "Create a new Hotel", new_hotel_path %></h3>
-<h3><%= link_to "Make a new reservation", new_reservation_path %></h3>
+<% if user_signed_in? && current_user.admin? %>
+  <h3><%= link_to "Make a new reservation", new_reservation_path %></h3>
+<% end %>
 
 <h1>All Hotels:</h1>
 <table>

@@ -5,12 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
   #enum role: [:user, :admin]
+  has_many :reservations 
+  has_many :hotels, through: :reservations 
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   
-
-  has_many :reservations 
-  has_many :hotels, through: :reservations 
 
   def self.from_omniauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

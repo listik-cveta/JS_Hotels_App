@@ -1,28 +1,21 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   helper_method :sort_column, :sort_direction
   
   def index
     @users = User.all
-    unless current_user.admin?
-      redirect_to root_path, alert: "Access denied."
+    unless user_signed_in? && current_user.admin?
+      if user_signed_in?
+        redirect_to root_path, alert: "Access denied."
+      else
+        redirect_to new_user_session_path, alert: "Access denied."
+      end
     end
   end 
-
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   @user.update(user_params)
-  # end
 
   def show
     @user = User.find(params[:id])
     @reservations = @user.reservations.order(sort_column + " " + sort_direction) #need this for sorting 
-    unless @user == current_user || current_user.admin?
-      redirect_to root_path, alert: "Access denied."
-    end
   end 
 
   private
