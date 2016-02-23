@@ -1,7 +1,8 @@
 class ReservationsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @reservations = Reservation.all
+   @reservations = Reservation.order(sort_column + " " + sort_direction)
     
     unless current_user.admin?
       redirect_to root_path, alert: "Access denied."
@@ -69,7 +70,8 @@ class ReservationsController < ApplicationController
     current_user.money += (@reservation.num_nights * @hotel.cost)
     current_user.save
     @reservation.destroy
-    redirect_to user_path(current_user), notice: "Your reservation has been deleted"
+    flash[:alert] = "Your reservation has been deleted. You have been refunded $#{@hotel.cost * @reservation.num_nights}"
+    redirect_to user_path(current_user)
   end 
 
   private 
@@ -92,6 +94,14 @@ class ReservationsController < ApplicationController
     unless user_signed_in?
       redirect_to new_user_session_path, alert: "Access denied"
     end 
+  end
+
+  def sort_column
+    Reservation.column_names.include?(params[:sort]) ? params[:sort] : "check_in"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end #ends class

@@ -1,8 +1,22 @@
 <h1>All Reservations:</h1>
-----------------------------------------------------------------------------------------------
-<% @reservations.each do |reservation| %>
-  <h2> <%= reservation.check_in.strftime("%A, %B %d, %Y") %> -- <%= Hotel.find_by_id(reservation.hotel_id).name %> </h2> 
-  <h2>Guest: <%= User.find_by_id(reservation.user_id).email %></h2>
-  <h3> <%= link_to "View Reservation", reservation_path(reservation) %> | <%= link_to "Edit Reservation", edit_reservation_path(reservation) %> | <%= link_to "Delete Reservation", reservation_path(reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' } %></h3>
-  ----------------------------------------------------------------------------------------------
-<% end %>
+<table>
+  <thead>
+  <tr>
+    <th><h2><%= sortable "check_in", "Check In Date" %></h2></th>
+    <th><h2>&nbsp&nbsp&nbsp<%= sortable "hotel_id", "Hotel" %></h2></th>
+    <th><h2><%= sortable "user_id", "Guest" %></h2></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @reservations.each do |reservation| %>
+    <td><br><%= reservation.check_in.strftime("%A, %B %d, %Y") %></td>
+    <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= Hotel.find_by_id(reservation.hotel_id).name %></td>
+    <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= User.find_by_id(reservation.user_id).email %></td>
+    <td><br>&nbsp&nbsp<%= link_to "Edit Reservation", edit_reservation_path(reservation) %><td>
+    <td><br>&nbsp&nbsp<%= link_to "Delete Reservation", reservation_path(reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' } %><td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
