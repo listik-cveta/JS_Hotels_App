@@ -3,15 +3,17 @@ class ReservationsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @reservations = Reservation.order(sort_column + " " + sort_direction)
+    # @reservations = Reservation.order(sort_column + " " + sort_direction)
+    @user = User.find(params[:user_id])
     
-    unless user_signed_in? && current_user.admin?
-      if user_signed_in?
-        redirect_to root_path, alert: "Access denied."
-      else
-        redirect_to new_user_session_path, alert: "Access denied."
-      end
-    end
+    
+    # unless user_signed_in? && current_user.admin?
+    #   if user_signed_in?
+    #     redirect_to root_path, alert: "Access denied."
+    #   else
+    #     redirect_to new_user_session_path, alert: "Access denied."
+    #   end
+    # end
   end 
 
   def show
@@ -48,7 +50,7 @@ class ReservationsController < ApplicationController
       current_user.save 
       flash[:alert] = "Thanks for booking a room at #{@hotel.name}!"
       @reservation.save!
-      redirect_to user_path(current_user)
+      redirect_to user_reservations_path(current_user)
     end 
   end 
 

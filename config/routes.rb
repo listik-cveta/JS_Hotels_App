@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  resources :reservations, only: [:create, :new, :edit, :update, :destroy, :show, :index]
+  resources :reservations, only: [:create, :new, :edit, :update, :destroy]
   resources :hotels
   #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
  
   root 'welcome#home'
+
+  resources :users, only: [:show] do 
+    resources :reservations, only: [:index, :show]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
