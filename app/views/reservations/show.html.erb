@@ -2,7 +2,7 @@
 
 <h2>Guest: <%= User.find_by_id(@reservation.user_id).email %></h2>
 <h2>Hotel: <%= Hotel.find_by_id(@reservation.hotel_id).name %></h2>
-<h3>Check In Date: <%= @reservation.check_in.strftime("%A, %B %d, %Y") %></h3>
+<h3>Check In Date: <%= @reservation.try(:check_in).try(:strftime, "%A, %B %d, %Y") %></h3>
 <h3>Price per night: $<%= Hotel.find_by_id(@reservation.hotel_id).cost %></h3>
 <h3>Number of nights: <%= @reservation.num_nights %></h3>
 <h3>Number of guests: <%= @reservation.num_guests %></h3>

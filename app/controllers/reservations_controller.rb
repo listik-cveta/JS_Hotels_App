@@ -34,9 +34,12 @@ class ReservationsController < ApplicationController
     elsif @hotel.min_nights > @reservation.num_nights # Do I need to have a has_many reservations through user?
       flash.now[:notice] = "Sorry, you need to stay here at least #{@hotel.min_nights} night(s)" # Can I use pluralize helper?
       render :new
-    elsif @hotel.max_guests < @reservation.num_guests
+    elsif @hotel.max_guests < @reservation.num_guests 
       flash.now[:notice] = "Sorry, only a maximum of #{@hotel.max_guests} guests are allowed to stay here"
       render :new
+    elsif @reservation.check_in == nil
+      flash.now[:notice] = "Please select a valid date"
+      render :new 
     else 
       current_user.money -= (@reservation.num_nights * @hotel.cost) 
       current_user.save 
@@ -72,7 +75,7 @@ class ReservationsController < ApplicationController
   private 
 
   def reservation_params
-    params.require(:reservation).permit(:num_nights, :num_guests, :check_in)
+    params.require(:reservation).permit(:num_nights, :num_guests, :check_in, :hotel_id)
   end
 
   def reservation_permission(reservation)
