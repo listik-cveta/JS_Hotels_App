@@ -2,7 +2,7 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-<%= form_for [@user, @reservation] do |f| %>
+<%= form_for [@user, @reservation] do |f| %> <!-- ******** do I need the @reservation???? ********* -->
 
   <%= f.label "Select Hotel" %>
   <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name) %><br><br>

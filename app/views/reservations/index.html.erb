@@ -1,10 +1,30 @@
-<h1>All Reservations:</h1>
- <h2><%= @user.name %><h2>
- <ul>
- <% @user.reservations.each do |reservation| %>
-  <li><%= reservation.try(:check_in).try(:strftime, "%A, %B %d, %Y") %></li>
-  <li><%= Hotel.find_by_id(reservation.hotel_id).name %></li>
+<% if flash[:alert] %>
+  <div class="notice"><%= flash[:alert] %></div>
 <% end %>
-</ul>
 
+<h1>All Reservations:</h1>
+ <h2>Name: <%= @user.name %></h2>
+ <h2>Net Worth: $<%= @user.money %></h2>
+ <h3><%= link_to "Create new reservation", new_reservation_path %></h3>
+
+<table>
+  <thead>
+  <tr>
+    <th><h2><%= sortable "check_in", "Check In Date" %></h2></th>
+    <th><h2>&nbsp&nbsp&nbsp<%= sortable "hotel_id", "Hotel" %></h2></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @reservations.each do |reservation| %>
+    <td><br><%= reservation.try(:check_in).try(:strftime, "%A, %B %d, %Y") %></td>
+    <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= Hotel.find_by_id(reservation.hotel_id).name %></td>
+    
+    <td><br>&nbsp&nbsp<%= link_to "View Reservation", user_reservation_path(@user, reservation) %><td>
+    <td><br>&nbsp&nbsp<%= link_to "Edit Reservation", edit_reservation_path(reservation) %><td>
+    <td><br>&nbsp&nbsp<%= link_to "Delete Reservation", reservation_path(reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' } %><td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
 

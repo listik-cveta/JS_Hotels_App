@@ -5,19 +5,17 @@ class ReservationsController < ApplicationController
   def index
     # @reservations = Reservation.order(sort_column + " " + sort_direction)
     @user = User.find(params[:user_id])
+    @reservations = @user.reservations.order(sort_column + " " + sort_direction)
+
     
-    
-    # unless user_signed_in? && current_user.admin?
-    #   if user_signed_in?
-    #     redirect_to root_path, alert: "Access denied."
-    #   else
-    #     redirect_to new_user_session_path, alert: "Access denied."
-    #   end
-    # end
+    unless current_user == @user || current_user.admin?
+        redirect_to root_path, alert: "Access denied."
+    end
   end 
 
   def show
-    @reservation = Reservation.find(params[:id])
+    @user = User.find(params[:user_id])
+    @reservation = @user.reservations.find(params[:id])
   end
 
   def new
