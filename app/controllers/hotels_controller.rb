@@ -1,7 +1,8 @@
 class HotelsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index #view all hotels
-    @hotels = Hotel.all 
+    @hotels = Hotel.order(sort_column + " " + sort_direction) 
     unless user_signed_in?
       redirect_to new_user_session_path 
     end
@@ -50,6 +51,14 @@ class HotelsController < ApplicationController
   def hotel_params 
     params.require(:hotel).permit(:name, :cost, :min_age, :min_nights, :max_guests, :address, :phone_number)
   end 
+
+  def sort_column
+    Hotel.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
 
 end #ends class 

@@ -1,13 +1,23 @@
 <h3><%= link_to "Create a new Hotel", new_hotel_path %></h3>
+<h3><%= link_to "Make a new reservation", new_reservation_path %></h3>
 
 <h1>All Hotels:</h1>
-
-<% counter = 1 %>
-<% @hotels.each do |hotel| %>
-  <h3><%= counter %>. <%= hotel.name %> | $<%= hotel.cost %> per night | <%= link_to "Details", hotel_path(hotel) %> </h3>
-  <h2> <%= link_to "Book this hotel", new_reservation_path %></h2>
-  <% counter += 1 %>
-  
-<% end %>
+<table>
+  <thead> 
+    <tr>
+      <th><%= sortable "name", "Hotel" %></th>
+      <th>&nbsp&nbsp&nbsp&nbsp<%= sortable "cost", "Price per night" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @hotels.each do |hotel| %>
+      <td><br>&nbsp&nbsp<%= hotel.name %></td>
+      <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp$<%= hotel.cost %> per night</td>
+      <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "Details", hotel_path(hotel) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
