@@ -9,9 +9,13 @@ class ReservationsController < ApplicationController
 
     
     unless current_user == @user || current_user.admin?
-        redirect_to root_path, alert: "Access denied."
+      redirect_to root_path, alert: "Access denied."
     end
   end 
+
+  def all_res 
+    @reservations = Reservation.order(sort_column + " " + sort_direction)
+  end
 
   def show
     @user = User.find(params[:user_id])
@@ -62,7 +66,7 @@ class ReservationsController < ApplicationController
     @reservation.hotel_id = params[:hotel_id]
     @reservation.user = current_user
     @reservation.save
-    redirect_to reservation_path(@reservation)
+    redirect_to user_reservation_path(current_user, @reservation)
   end 
 
   def destroy
@@ -72,7 +76,11 @@ class ReservationsController < ApplicationController
     current_user.save
     @reservation.destroy
     flash[:alert] = "Your reservation has been deleted. You have been refunded $#{@hotel.cost * @reservation.num_nights}"
-    redirect_to user_path(current_user)
+    if current_user.admin?
+      redirect_to all_res_path
+    else
+      redirect_to user_reservations_path(current_user)
+    end
   end 
 
   private 
