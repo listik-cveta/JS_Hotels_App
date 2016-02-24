@@ -1,7 +1,7 @@
 <%= form_for [current_user, @reservation] do |f| %>
 
   <%= f.label "Select Hotel" %>
-  <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name) %><br><br>
+  <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name, @reservation.hotel_id) %><br><br>
 
   <%= f.label "Check in date" %>
   <%= f.date_field :check_in %><br><br>

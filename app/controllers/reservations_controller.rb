@@ -47,6 +47,9 @@ class ReservationsController < ApplicationController
     elsif @reservation.check_in == nil
       flash.now[:notice] = "Please select a valid date"
       render :new 
+    elsif @reservation.check_in < Time.now
+      flash.now[:notice] = "Please select a valid date"
+      render :new 
     else 
       current_user.money -= (@reservation.num_nights * @hotel.cost) 
       current_user.save 
