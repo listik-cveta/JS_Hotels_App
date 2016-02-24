@@ -75,7 +75,7 @@ class ReservationsController < ApplicationController
     current_user.money += (@reservation.num_nights * @hotel.cost)
     current_user.save
     @reservation.destroy
-    flash[:alert] = "Your reservation has been deleted. You have been refunded $#{@hotel.cost * @reservation.num_nights}"
+    flash[:alert] = "Your reservation at #{@hotel.name} has been deleted. You have been refunded $#{@hotel.cost * @reservation.num_nights}"
     if current_user.admin?
       redirect_to all_res_path
     else

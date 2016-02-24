@@ -19,10 +19,6 @@ class UsersController < ApplicationController
   end 
 
   private
-####### CAN I DELETE user_params?????
-  # def user_params
-  #   params.require(:user).permit(:name, :admin, :age, :money)
-  # end
 
   def sort_column
     User.column_names.include?(params[:sort]) ? params[:sort] : "check_in"
