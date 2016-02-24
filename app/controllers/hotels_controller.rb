@@ -33,6 +33,13 @@ class HotelsController < ApplicationController
     redirect_to hotel_path(@hotel)
   end
 
+  def destroy
+    @hotel = Hotel.find(params[:id])
+    @hotel.destroy
+    flash[:alert] = "#{@hotel.name} has been deleted"
+    redirect_to hotels_path
+  end 
+
   private 
 
   def hotel_params 
