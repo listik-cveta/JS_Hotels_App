@@ -1,4 +1,4 @@
-<%= form_for @reservation do |f| %>
+<%= form_for [current_user, @reservation] do |f| %>
 
   <%= f.label "Select Hotel" %>
   <%= select_tag :hotel_id, options_from_collection_for_select(Hotel.all, :id, :name) %><br><br>

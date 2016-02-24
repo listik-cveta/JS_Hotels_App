@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  resources :reservations, only: [:create, :new, :edit, :update, :destroy]
+  resources :reservations, only: [:destroy]
   resources :hotels
   #devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users, only: [:show] do 
-    resources :reservations, only: [:index, :show]
+    resources :reservations, only: [:index, :show, :create, :new, :edit, :update]
   end
 
   get '/all_res', to: 'reservations#all_res'

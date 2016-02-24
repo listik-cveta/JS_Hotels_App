@@ -12,10 +12,10 @@
   <tr>
     <% @reservations.each do |reservation| %>
     <td><br><%= reservation.try(:check_in).try(:strftime, "%A, %B %d, %Y") %></td>
-    <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= Hotel.find_by_id(reservation.hotel_id).name %></td>
+    <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= Hotel.find_by_id(reservation.hotel).name %></td>
     <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= User.find_by_id(reservation.user_id).email %></td>
     <td><br>&nbsp&nbsp<%= link_to "View Guest Profile", user_path(User.find_by_id(reservation.user_id)) %><td>
-    <td><br>&nbsp&nbsp<%= link_to "Edit Reservation", edit_reservation_path(reservation) %><td>
+    <td><br>&nbsp&nbsp<%= link_to "Edit Reservation", edit_user_reservation_path(reservation.user, reservation) %><td>
     <td><br>&nbsp&nbsp<%= link_to "Delete Reservation", reservation_path(reservation), method: :delete, data: { confirm: 'Are you sure you want to delete this reservation?' } %><td>
   </tr>
   <% end %>

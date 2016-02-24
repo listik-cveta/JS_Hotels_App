@@ -10,7 +10,7 @@
  
     <h3><%= link_to "View My Profile", user_path(current_user) %> </h3>
     <h3><%= link_to "View Hotels", hotels_path %></h3>
-    <h3><%= link_to "Make a new reservation", new_reservation_path %></h3>
+    <h3><%= link_to "Make a new reservation", new_user_reservation_path(current_user) %></h3>
 
     <% if current_user.admin? %>
       <h3><%= link_to "Create a hotel", new_hotel_path %></h3>
