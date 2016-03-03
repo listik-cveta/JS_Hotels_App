@@ -1,9 +1,12 @@
 <h1>Edit Hotel</h1>
-<h2>MAKE SURE ONLY ADMIN CAN EDIT</h2>
 
-<%= form_for @hotel, method: :put do |f| %>
+
+<%= form_for @hotel, html: {multipart: true}, method: :put do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %> <br><br>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %> <br><br>
 
   <%= f.label "Phone Number:" %>
   <%= f.text_field :phone_number %> <br><br>

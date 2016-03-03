@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $(".hotel_image").hover(function() {
+    $(this).addClass('enlarge');
+  },
+  function(){
+    $(this).removeClass('enlarge');
+  }
+  );
+});

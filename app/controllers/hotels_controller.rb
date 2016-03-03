@@ -43,7 +43,7 @@ class HotelsController < ApplicationController
   private 
 
   def hotel_params 
-    params.require(:hotel).permit(:name, :cost, :min_age, :min_nights, :max_guests, :address, :phone_number)
+    params.require(:hotel).permit(:name, :avatar, :cost, :min_age, :min_nights, :max_guests, :address, :phone_number)
   end 
 
   def sort_column

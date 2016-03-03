@@ -8,7 +8,7 @@
 <h1>All Hotels:</h1>
 <h3>Click on field to sort</h3>
 
-<table>
+<table id="index_table">
   <thead> 
     <tr>
       <th><%= sortable "name", "Hotel" %></th>
@@ -18,11 +18,14 @@
   <tbody>
     <tr>
     <% @hotels.each do |hotel| %>
+    
+      <td><%= image_tag hotel.avatar.url(:thumb), class: "hotel_image" %></td>
       <td><br>&nbsp&nbsp<%= hotel.name %></td>
       <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp$<%= hotel.cost %> per night</td>
       <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "Details", hotel_path(hotel) %></td>
       <% if current_user.admin? %>
         <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "Delete hotel", hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure you want to delete this hotel?' } %></td>
+
       <% end %>
     </tr>
     <% end %>
