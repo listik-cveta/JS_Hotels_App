@@ -29,3 +29,59 @@
   <%= f.submit "Create Hotel" %>
 
 <% end %>
+
+<div id="hotelResult">
+  <h2 id="hotelName"></h2>
+  <p id="hotelPhone"></p>
+  <p id="hotelAddress"></p>
+  <p id="hotelCost"></p>
+  <p id="hotelAge"></p>
+  <p id="hotelNights"></p>
+  <p id="hotelGuests"></p>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() { 
+  $('form').submit(function(event) {
+    event.preventDefault();
+
+    var values = $(this).serialize();
+
+    var posting = $.post('/hotels', values);
+
+    posting.done(function(data) {
+      var hotel = data["hotel"];
+      $("#hotelName").text(hotel["name"]);
+      $("#hotelPhone").text(hotel["phone_number"]);
+      $("#hotelAddress").text(hotel["address"]);
+      $("#hotelCost").text(hotel["cost"]);
+      $("#hotelAge").text(hotel["min_age"]);
+      $("#hotelNights").text(hotel["min_nights"]);
+      $("#hotelGuests").text(hotel["max_guests"]);
+    });
+   });
+  });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

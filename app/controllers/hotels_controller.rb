@@ -12,6 +12,10 @@ class HotelsController < ApplicationController
 
   def show #view a single hotel 
     @hotel = Hotel.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @hotel }
+    end
   end 
 
   def new
@@ -20,7 +24,8 @@ class HotelsController < ApplicationController
 
   def create 
     @hotel = Hotel.create(hotel_params)
-    redirect_to hotel_path(@hotel) 
+    render json: @hotel, status: 201
+    # redirect_to hotel_path(@hotel) 
   end 
 
   def edit 
