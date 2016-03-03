@@ -3,7 +3,7 @@ class HotelsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index #view all hotels
-    @hotels = Hotel.order(sort_column + " " + sort_direction) 
+    @hotels = Hotel.order(sort_column + " " + sort_direction).page(params[:page])
     
     unless user_signed_in? 
       redirect_to new_user_session_path, alert: "Access denied."
