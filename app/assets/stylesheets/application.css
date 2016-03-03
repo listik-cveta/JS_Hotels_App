@@ -191,22 +191,31 @@ body {
   color: #9a9a9a;
 }
 
-.home-menu h2 {
+.home-menu h1, h2 {
   margin-left: 45px;
 }
 
 .border-bottom tr {
   border-bottom: 1px solid #000;
+  margin-bottom: 25px;
 }
 
 table {
   border-collapse: collapse;
 }
 
+#res-table {
+  border-collapse: separate;
+}
+
 .hotel-text {
   color: #383843;
   font-size: 1.1em;
   font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.profile {
+  margin-left: 60px;
 }
 
 
