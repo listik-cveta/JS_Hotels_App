@@ -1,8 +1,8 @@
 <% if flash[:alert] %>
   <div class="notice"><%= flash[:alert] %></div>
 <% end %>
-<div class="home-menu">
-<h1>All Reservations:</h1>
+<div class="home-menu" id="res-user-menu">
+<h1 class="hotel-show-title">All Reservations:</h1>
  <h2>Name: <%= @user.name %></h2>
  <h2>Net Worth: $<%= @user.money %></h2>
  

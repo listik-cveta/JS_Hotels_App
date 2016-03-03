@@ -243,11 +243,19 @@ table {
   cursor: pointer;
 }
 
+#user-list li {
+  display: none;
+  list-style-type: none;
+  font-size: 1.3em;
+}
 
+#user-list div {
+  margin-bottom: 20px;
+}
 
-
-
-
+#res-user-menu {
+  text-align: center;
+}
 
 
 
