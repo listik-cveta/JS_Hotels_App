@@ -115,6 +115,11 @@ body {
   margin-right: 25px;
 }
 
+#contact h2 {
+  margin-left: 0;
+  text-decoration: underline;
+}
+
 #show-image {
   display: block;
 }
@@ -217,6 +222,31 @@ table {
 .profile {
   margin-left: 60px;
 }
+
+#res-table td {
+  display: none;
+}
+
+#loadMore {
+  font-size: 1.3em;
+  border: 1px solid #000;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: #8C1613;
+  color: #fff;
+  margin-left: 300px;
+}
+
+#loadMore:hover {
+  background-color: #0C3972;
+  cursor: pointer;
+}
+
+
+
+
+
 
 
 
