@@ -21,13 +21,14 @@
       <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= sortable "cost", "Price per night" %></th>
     </tr>
   </thead>
-  <tbody>
+  
+  <tbody class="border-bottom">
     <tr>
     <% @hotels.each do |hotel| %>
-    
+  
       <td><%= image_tag hotel.avatar.url(:thumb), class: "hotel_image" %></td>
-      <td><br>&nbsp&nbsp<%= hotel.name %></td>
-      <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp$<%= hotel.cost %> per night</td>
+      <td><br><p class="hotel-text">&nbsp&nbsp<%= hotel.name %></p></td>
+      <td><br><p class="hotel-text">&nbsp&nbsp&nbsp&nbsp&nbsp$<%= hotel.cost %> per night</p></td>
       <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "Details", hotel_path(hotel), class:"crud-opt" %></td>
       <% if current_user.admin? %>
         <td><br>&nbsp&nbsp&nbsp&nbsp&nbsp<%= link_to "Delete hotel", hotel_path(hotel), class:"crud-opt", method: :delete, data: { confirm: 'Are you sure you want to delete this hotel?' } %></td>
@@ -36,6 +37,7 @@
     </tr>
     <% end %>
   </tbody>
+
 </table>
 </div> 
 

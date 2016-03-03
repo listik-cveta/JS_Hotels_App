@@ -1,23 +1,24 @@
-<h1>Welcome to the Hotels App!</h1>
 
 <% if flash[:alert] %>
   <div class="notice"><%= flash[:alert] %></div>
 <% end %>
 
-
+<div class="home-menu">
 <% if user_signed_in? %>
   <h2>What would you like to do?</h2>
+  <ul>
  
-    <h3><%= link_to "View My Profile", user_path(current_user) %> </h3>
-    <h3><%= link_to "View Hotels", hotels_path %></h3>
-    <h3><%= link_to "Make a new reservation", new_user_reservation_path(current_user) %></h3>
+    <li><%= link_to "View My Profile", user_path(current_user), class:"home-item" %> </li>
+    <li><%= link_to "View Hotels", hotels_path, class:"home-item" %></li>
+    <li><%= link_to "Make a new reservation", new_user_reservation_path(current_user), class:"home-item" %></li>
 
     <% if current_user.admin? %>
-      <h3><%= link_to "Create a hotel", new_hotel_path %></h3>
-      <h3><%= link_to "View All Reservations (admin)", all_res_path %></h3>
+      <li><%= link_to "Create a hotel", new_hotel_path, class:"home-item" %></li>
+      <li><%= link_to "View All Reservations", all_res_path, class:"home-item" %></li>
     <% end %>
     
-  
+  </ul>
 <% else %>
   <h2>Please login to gain access to all of our amazing hotel deals!</h2>
 <% end %>
+</div>

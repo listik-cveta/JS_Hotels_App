@@ -37,7 +37,7 @@
 
 #index_table thead {
   display: inline-block;
-  left: 350px;
+  left: 390px;
   position: relative;
 }
 
@@ -167,8 +167,47 @@ body {
   color: #343441;
 }
 
+.home-menu ul {
+  list-style-type: none;
+  text-align: center;
+}
 
+.home-menu ul li {
+  width: 300px;
+}
 
+.home-item {
+  font-size: 1.4em;
+  text-decoration: none;
+  display: block;
+  border: 1px solid #000;
+  padding: 8px;
+  background-color: #9a9a9a;
+  color: #e2e2e2;
+}
+
+.home-item:hover {
+  background-color: #e2e2e2;
+  color: #9a9a9a;
+}
+
+.home-menu h2 {
+  margin-left: 45px;
+}
+
+.border-bottom tr {
+  border-bottom: 1px solid #000;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.hotel-text {
+  color: #383843;
+  font-size: 1.1em;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
 
 
