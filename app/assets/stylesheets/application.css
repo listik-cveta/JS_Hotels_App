@@ -227,7 +227,11 @@ table {
   display: none;
 }
 
-#loadMore {
+#all-res-table td {
+  display: none;
+}
+
+.loadMore {
   font-size: 1.3em;
   border: 1px solid #000;
   display: inline-block;
@@ -238,7 +242,7 @@ table {
   margin-left: 300px;
 }
 
-#loadMore:hover {
+.loadMore:hover {
   background-color: #0C3972;
   cursor: pointer;
 }

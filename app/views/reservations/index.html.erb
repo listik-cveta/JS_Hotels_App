@@ -32,14 +32,14 @@
   </tbody>
 </table>
 
-<div id="loadMore">Load more</div>
+<div class="loadMore">Load more</div>
 
 <script type="text/javascript">
   $(document).ready(function() {
   size_td = $("#res-table td").size();
   x=15;
   $('#res-table td:lt('+x+')').show();
-  $('#loadMore').click(function() {
+  $('.loadMore').click(function() {
     x = (x+16 <= size_td) ? x+16 : size_td;
     $('#res-table td:lt('+x+')').show();
   });
