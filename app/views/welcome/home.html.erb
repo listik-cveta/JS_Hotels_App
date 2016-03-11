@@ -10,7 +10,7 @@
  
     <li><%= link_to "View My Profile", user_path(current_user), class:"home-item" %> </li>
     <li><%= link_to "View Hotels", hotels_path, class:"home-item" %></li>
-    <li><%= link_to "Make a new reservation", new_user_reservation_path(current_user), class:"home-item" %></li>
+    <li><%= link_to "Make a new reservation", new_reservation_path, class:"home-item" %></li>
 
     <% if current_user.admin? %>
       <li><%= link_to "Create a hotel", new_hotel_path, class:"home-item" %></li>

@@ -1,34 +1,12 @@
-<h1>Create a new hotel</h1>
+<div class="page-menu">
+  <%= link_to "View All Hotels", hotels_path, class:"page_menu_text" %> <br><br>
+  <h1>Create a new hotel</h1>
+</div>
 
+<br><br><br>
 
-<%= form_for @hotel, html: {multipart: true} do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br><br>
+<%= render 'hotel' %>
 
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %> <br><br>
-
-  <%= f.label "Phone Number" %>
-  <%= f.text_field :phone_number %> <br><br>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %> <br><br>
-
-  <%= f.label :cost %>
-  <%= f.number_field :cost %> <br><br>
-
-  <%= f.label "Minimum age to stay here" %>
-  <%= f.number_field :min_age %><br><br>
-
-  <%= f.label "Minimum number of nights" %>
-  <%= f.number_field :min_nights %> <br><br>
-
-  <%= f.label "Maximum number of guests" %>
-  <%= f.number_field :max_guests %> <br><br>
-
-  <%= f.submit "Create Hotel" %>
-
-<% end %>
 
 <div id="hotelResult">
   <h2 id="hotelName"></h2>
@@ -38,9 +16,10 @@
   <p id="hotelAge"></p>
   <p id="hotelNights"></p>
   <p id="hotelGuests"></p>
+ 
 </div>
 
-
+<!-- How can I get my image to show up here? -->
 <script type="text/javascript" charset="utf-8">
   $(function() { 
   $('form').submit(function(event) {

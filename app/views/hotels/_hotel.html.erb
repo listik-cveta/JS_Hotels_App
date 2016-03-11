@@ -1,0 +1,28 @@
+<%= form_for @hotel, html: {multipart: true} do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br><br>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %> <br><br>
+
+  <%= f.label "Phone Number:" %>
+  <%= f.text_field :phone_number %> <br><br>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %> <br><br>
+
+  <%= f.label :cost %>
+  <%= f.number_field :cost %> <br><br>
+
+  <%= f.label "Minimum age to stay here" %>
+  <%= f.number_field :min_age %><br><br>
+
+  <%= f.label "Minimum number of nights" %>
+  <%= f.number_field :min_nights %> <br><br>
+
+  <%= f.label "Maximum number of guests" %>
+  <%= f.number_field :max_guests %><br><br> 
+
+  <%= f.submit  %>
+
+<% end %>

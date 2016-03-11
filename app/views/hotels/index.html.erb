@@ -5,7 +5,7 @@
       <li><%= link_to "Create a new Hotel", new_hotel_path, class:"page_menu_text" %></li>
     <% end %>
     <% if user_signed_in? || current_user.admin? %>
-      <li><%= link_to "Make a new reservation", new_user_reservation_path(current_user), class:"page_menu_text" %></li>
+      <li><%= link_to "Make a new reservation", new_reservation_path, class:"page_menu_text" %></li>
     <% end %>
   </ul>
 </div>

@@ -1,6 +1,6 @@
 <h1>Edit Reservation</h1>
 
-<%= form_for [@reservation.user, @reservation], method: :put do |f| %>
+<%= form_for @reservation, method: :put do |f| %>
 
   <%= f.label "Select Hotel" %>
   <%= select_tag [:hotel_id], options_from_collection_for_select(Hotel.all, :id, :name, @reservation.hotel_id) %><br><br>
