@@ -62,6 +62,7 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
+    # @reservation.guests.build #creates empty inputs 
   end
 
   def update
@@ -90,7 +91,7 @@ class ReservationsController < ApplicationController
   private 
 
   def reservation_params
-    params.require(:reservation).permit(:num_nights, :num_guests, :check_in, :hotel_id, guests_attributes: [:id, :name, :email])
+    params.require(:reservation).permit(:num_nights, :num_guests, :check_in, :hotel_id, guests_attributes: [:id, :name, :_destroy])
   end
 
   def sort_column
