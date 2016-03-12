@@ -12,9 +12,15 @@
   <%= f.label "Number of guests" %>
   <%= f.number_field :num_guests %><br><br>
 
+  <%= f.fields_for :guests do |guest| %>
+    <%= guest.label :name %>
+    <%= guest.text_field :name %>
+
+    <%= guest.label :email %>
+    <%= guest.text_field :email %>
+  <% end %>
+
   <%= f.submit %> 
 
 <% end %>
 
-
-<!-- How do I get the placeholder for the edit form for :hotel_id ????? -->

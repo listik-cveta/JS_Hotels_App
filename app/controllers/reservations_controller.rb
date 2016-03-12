@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @reservation.guests.build
   end 
 
   def create
@@ -89,7 +90,7 @@ class ReservationsController < ApplicationController
   private 
 
   def reservation_params
-    params.require(:reservation).permit(:num_nights, :num_guests, :check_in, :hotel_id)
+    params.require(:reservation).permit(:num_nights, :num_guests, :check_in, :hotel_id, guests_attributes: [:id, :name, :email])
   end
 
   def sort_column

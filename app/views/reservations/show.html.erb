@@ -6,6 +6,11 @@
 <h3>Price per night: $<%= Hotel.find_by_id(@reservation.hotel_id).cost %></h3>
 <h3>Number of nights: <%= @reservation.num_nights %></h3>
 <h3>Number of guests: <%= @reservation.num_guests %></h3>
+<ul>
+<% @reservation.guests.each do |guest| %>
+<li><%= guest.name %> | <%= guest.email %></li>
+<% end %>
+</ul>
 
 <h3>Total Cost: $<%= @reservation.num_nights * Hotel.find_by_id(@reservation.hotel_id).cost %></h3>
 
