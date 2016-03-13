@@ -1,5 +1,4 @@
 class Reservation < ActiveRecord::Base
-  attr_accessor :users_attributes
   belongs_to :hotel
   belongs_to :user
 

@@ -13,9 +13,11 @@
   <%= f.number_field :num_guests %><br><br>
 
   <%= f.fields_for :guests do |guest| %>
-    <%= render 'guests', f: guest %>
+    <%= render 'guest_fields', f: guest %>
   <% end %>
+  <p><%= link_to_add_fields "Add guest", f, :guests %></p>
 
+  
   <%= f.submit %> 
 
 <% end %>

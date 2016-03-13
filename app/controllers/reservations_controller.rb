@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
-    @reservation.guests.build
+    @reservation.guests.build 
   end 
 
   def create
@@ -62,7 +62,7 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
-    # @reservation.guests.build #creates empty inputs 
+    #@reservation.guests.build #creates empty inputs 
   end
 
   def update
