@@ -10,7 +10,9 @@
   <%= f.number_field :num_nights %><br><br>
 
   <%= f.label "Number of guests" %>
-  <%= f.number_field :num_guests %><br><br>
+  <%= f.number_field :num_guests %><br>
+
+  <h3>Guests:</h3>
 
   <%= f.fields_for :guests do |guest| %>
     <%= render 'guest_fields', f: guest %>

@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
-    @reservation.guests.build 
+    # @reservation.guests.build 
   end 
 
   def create

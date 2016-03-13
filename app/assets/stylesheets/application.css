@@ -14,10 +14,6 @@
  *= require_self
  */
 
- .hidden {
-  visibility: hidden;
- }
-
 .enlarge {
   margin-left: 20%;
  -webkit-transform: scale(1.3);
